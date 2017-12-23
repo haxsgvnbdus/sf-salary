@@ -35,3 +35,40 @@ print("shape: {}".format(l.shape))
 print("datatype: {}".format(l.dtype))
 
 #indexing & selection 
+m = np.arange(10)
+print(m[8:10])
+
+#broadcasting 
+m[0:3] = 100	#[100 100 100   3   4   5   6   7   8   9]
+m[:] = 99		#[99 99 99 99 99 99 99 99 99 99]
+mcpy = m.copy() 
+
+#2d indexing 
+arr_2d = np.array(([5,10,15],[20,25,30],[35,40,45]))
+n = arr_2d[1]		#[20, 25, 30]
+o = arr_2d[1][0]	#20
+
+p = arr_2d[1:,:2]
+# print(p)
+
+#fancy indexing allows selecting entire rows/columns out of order
+arr1010 = np.zeros((10,10))
+arr_length = arr1010.shape[0] #shape of first row
+
+for i in range(arr_length):
+	arr1010[i] = i 			  #set the whole row to i
+
+print(arr1010[[2,4,6]]) #print rows 2,4,6
+
+#selection
+from1to10 = np.arange(1,11)
+bool_arr = from1to10 > 4		#[False False False False  True  True  True  True  True  True]
+filtered = from1to10[bool_arr]
+print(filtered)					#[ 5  6  7  8  9 10]
+print(from1to10[from1to10 <3])  #[1 2]
+
+#universal operations
+x = np.log(from1to10)
+y = np.exp(from1to10)
+z = np.sqrt(from1to10)
+print(z)
